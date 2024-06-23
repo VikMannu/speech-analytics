@@ -162,85 +162,85 @@ class Parser:
             return 'z'
         if self.current_token == 'A':
             self.__match('A')
-            return 'A'
+            return 'a'
         if self.current_token == 'B':
             self.__match('B')
-            return 'B'
+            return 'b'
         if self.current_token == 'C':
             self.__match('C')
-            return 'C'
+            return 'c'
         if self.current_token == 'D':
             self.__match('D')
-            return 'D'
+            return 'd'
         if self.current_token == 'E':
             self.__match('E')
-            return 'E'
+            return 'e'
         if self.current_token == 'F':
             self.__match('F')
-            return 'F'
+            return 'f'
         if self.current_token == 'G':
             self.__match('G')
-            return 'G'
+            return 'g'
         if self.current_token == 'H':
             self.__match('H')
-            return 'H'
+            return 'h'
         if self.current_token == 'I':
             self.__match('I')
-            return 'I'
+            return 'i'
         if self.current_token == 'J':
             self.__match('J')
-            return 'J'
+            return 'j'
         if self.current_token == 'K':
             self.__match('K')
-            return 'K'
+            return 'k'
         if self.current_token == 'L':
             self.__match('L')
-            return 'L'
+            return 'l'
         if self.current_token == 'M':
             self.__match('M')
-            return 'M'
+            return 'm'
         if self.current_token == 'N':
             self.__match('N')
-            return 'N'
+            return 'n'
         if self.current_token == 'Ñ':
             self.__match('Ñ')
-            return 'Ñ'
+            return 'ñ'
         if self.current_token == 'O':
             self.__match('O')
-            return 'O'
+            return 'o'
         if self.current_token == 'P':
             self.__match('P')
-            return 'P'
+            return 'p'
         if self.current_token == 'Q':
             self.__match('Q')
-            return 'Q'
+            return 'q'
         if self.current_token == 'R':
             self.__match('R')
-            return 'R'
+            return 'r'
         if self.current_token == 'S':
             self.__match('S')
-            return 'S'
+            return 's'
         if self.current_token == 'T':
             self.__match('T')
-            return 'T'
+            return 't'
         if self.current_token == 'U':
             self.__match('U')
-            return 'U'
+            return 'u'
         if self.current_token == 'V':
             self.__match('V')
-            return 'V'
+            return 'v'
         if self.current_token == 'W':
             self.__match('W')
-            return 'W'
+            return 'w'
         if self.current_token == 'X':
             self.__match('X')
-            return 'X'
+            return 'x'
         if self.current_token == 'Y':
             self.__match('Y')
-            return 'Y'
+            return 'y'
         if self.current_token == 'Z':
             self.__match('Z')
-            return 'Z'
+            return 'z'
         if self.current_token == 'á':
             self.__match('á')
             return 'á'
@@ -258,25 +258,25 @@ class Parser:
             return 'ú'
         if self.current_token == 'Á':
             self.__match('Á')
-            return 'Á'
+            return 'á'
         if self.current_token == 'É':
             self.__match('É')
-            return 'É'
+            return 'é'
         if self.current_token == 'Í':
             self.__match('Í')
-            return 'Í'
+            return 'í'
         if self.current_token == 'Ó':
             self.__match('Ó')
-            return 'Ó'
+            return 'ó'
         if self.current_token == 'Ú':
             self.__match('Ú')
-            return 'Ú'
+            return 'ú'
         if self.current_token == 'ü':
             self.__match('ü')
             return 'ü'
         else:
             self.__match('Ü')
-            return 'Ü'
+            return 'ü'
 
     def __punctuation(self):
         if self.current_token == ' ':
