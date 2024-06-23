@@ -24,8 +24,7 @@ BNF
 
 class Parser:
     def __init__(self, input_string):
-        self.input_string = list(input_string)
-        print(input_string)
+        self.input = list(input_string)
         self.current_token = None
 
     def parse(self):
@@ -36,9 +35,13 @@ class Parser:
             print(e)
             raise ValueError('La oración no forma parte de la lengua española')
 
+    def load_input(self, input_string):
+        self.input = list(input_string)
+        self.current_token = None
+
     def __get_next_token(self):
-        if self.input_string:
-            return self.input_string.pop(0)
+        if self.input:
+            return self.input.pop(0)
         else:
             return None
 
