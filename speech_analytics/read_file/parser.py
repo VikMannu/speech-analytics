@@ -34,6 +34,7 @@ class Parser:
             return self.__sentence()
         except ValueError as e:
             print(e)
+            raise ValueError('La oración no forma parte de la lengua española')
 
     def __get_next_token(self):
         if self.input_string:
