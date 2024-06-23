@@ -11,6 +11,7 @@ BNF
 
 <word_tail> ::= <letter> <word_tail> { word_tail = letter + word_tail }
               | <punctuation> { '' }
+              | Ɛ { '' }
 
 <letter> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "ñ" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
             | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "Ñ" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
@@ -66,6 +67,8 @@ class Parser:
         return self.__letter() + self.__word_tail()
 
     def __word_tail(self):
+        if self.current_token is None:
+            return ''
         if self.__is_letter(self.current_token):
             return self.__letter() + self.__word_tail()
         else:
@@ -340,6 +343,6 @@ class Parser:
 
 
 if __name__ == '__main__':
-    input = 'Hola, esto es una frase de prueba!'
+    input = '¡Hola, esto es una frase de prueba! Además, agrego palabras con acento'
     parser = Parser(input)
     print(parser.parse())
