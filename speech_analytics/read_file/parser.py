@@ -329,8 +329,14 @@ class Parser:
         if self.current_token == "\n":
             self.__match("\n")
             return ''
-        else:
+        if self.current_token == "\t":
             self.__match('\t')
+            return ''
+        if self.current_token == '-':
+            self.__match('-')
+            return ''
+        else:
+            self.__match('_')
             return ''
 
     @staticmethod
@@ -339,10 +345,10 @@ class Parser:
 
     @staticmethod
     def __is_punctuation(char):
-        return char in " ,.;:¡!¿?'\"()\n\t[]{}"
+        return char in " ,.;:¡!¿?'\"()\n\t[]{}-_"
 
 
 if __name__ == '__main__':
-    input = '¡Hola, esto es una frase de prueba! Además, agrego palabras con acento'
+    input = '¡Hola, esto es una frase de prueba! Además, agrego palabras con acento - ¿Y si tiene salto de linea?'
     parser = Parser(input)
     print(parser.parse())
