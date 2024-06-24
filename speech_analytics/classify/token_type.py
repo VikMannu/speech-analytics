@@ -6,3 +6,4 @@ class TokenType(Enum):
     FAREWELL = "FAREWELL"
     GOOD = "GOOD"
     BAD = "BAD"
+    NEUTRAL = "NEUTRAL"
