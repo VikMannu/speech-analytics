@@ -5,10 +5,10 @@ from speech_analytics.bnf.parser import Parser
 from speech_analytics.classify.classify import Classify
 
 
-class FileViewerApp:
+class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Lector de Archivos")
+        self.root.title("Speech Analytics")
 
         # Crear un botón para abrir el archivo
         self.open_button = tk.Button(root, text="Abrir Archivo", command=self.open_file)
@@ -35,5 +35,5 @@ class FileViewerApp:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = FileViewerApp(root)
+    app = App(root)
     root.mainloop()
