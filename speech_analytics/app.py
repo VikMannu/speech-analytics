@@ -1,27 +1,36 @@
-import tkinter as tk
-from tkinter import filedialog, Text
-
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QVBoxLayout, QWidget, QFileDialog
 from speech_analytics.bnf.parser import Parser
 from speech_analytics.classify.classify import Classify
 
 
-class App:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Speech Analytics")
+class App(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Speech Analytics")
 
         # Crear un botón para abrir el archivo
-        self.open_button = tk.Button(root, text="Abrir Archivo", command=self.open_file)
-        self.open_button.pack(pady=10)
+        self.open_button = QPushButton("Abrir Archivo", self)
+        self.open_button.clicked.connect(self.open_file)
 
         # Crear un área de texto para mostrar el contenido del archivo
-        self.text_display = Text(root, wrap=tk.WORD, width=80, height=20)
-        self.text_display.pack(padx=10, pady=10)
+        self.text_display = QTextEdit(self)
+        self.text_display.setReadOnly(True)
+        self.text_display.setLineWrapMode(QTextEdit.WidgetWidth)
+        self.text_display.setFixedSize(800, 400)
+
+        # Layout principal
+        layout = QVBoxLayout()
+        layout.addWidget(self.open_button)
+        layout.addWidget(self.text_display)
+
+        # Widget central
+        central_widget = QWidget()
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
 
     def open_file(self):
-        filepath = filedialog.askopenfilename(
-            filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
-        )
+        filepath, _ = QFileDialog.getOpenFileName(self, "Abrir Archivo", "", "Text files (*.txt);;All files (*.*)")
         if not filepath:
             return
 
@@ -34,18 +43,18 @@ class App:
         self.display_results(text, classify)
 
     def display_results(self, text, classify):
-        self.text_display.delete(1.0, tk.END)
-        self.text_display.insert(tk.END, text)
-        # Configurar el tag "white" para que el texto sea blanco
-        self.text_display.tag_configure("white", foreground="white")
-        self.text_display.insert(tk.END, "\n\n--- Resumen ---\n")
-        self.text_display.insert(tk.END, f"Saludos: {', '.join(classify.greetings_keys)}\n")
-        self.text_display.insert(tk.END, f"Despedidas: {', '.join(classify.farewells_keys)}\n")
-        self.text_display.insert(tk.END, f"Frases: {', '.join(classify.phrases_keys)}\n")
-        self.text_display.insert(tk.END, f"Palabras encontradas: {', '.join(classify.words)}\n")
+        self.text_display.clear()
+        self.text_display.insertPlainText(text)
+        self.text_display.insertPlainText("\n\n--- Resumen ---\n")
+        self.text_display.insertPlainText(f"Palabras: {', '.join(classify.sentence)}\n")
+        self.text_display.insertPlainText(f"Saludos: {', '.join(classify.greetings_keys)}\n")
+        self.text_display.insertPlainText(f"Despedidas: {', '.join(classify.farewells_keys)}\n")
+        self.text_display.insertPlainText(f"Frases: {', '.join(classify.phrases_keys)}\n")
+        self.text_display.insertPlainText(f"Palabras encontradas: {', '.join(classify.words_keys)}\n")
 
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = App(root)
-    root.mainloop()
+    app = QApplication(sys.argv)
+    window = App()
+    window.show()
+    sys.exit(app.exec_())
