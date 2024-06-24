@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, Text
 
 from speech_analytics.bnf.parser import Parser
+from speech_analytics.classify.classify import Classify
 
 
 class FileViewerApp:
@@ -26,7 +27,8 @@ class FileViewerApp:
         with open(filepath, "r") as file:
             text = file.read()
             parser = Parser(text)
-            print(parser.parse())
+            classify = Classify(parser.parse())
+            classify.classify()
         self.text_display.delete(1.0, tk.END)
         self.text_display.insert(tk.END, text)
 
