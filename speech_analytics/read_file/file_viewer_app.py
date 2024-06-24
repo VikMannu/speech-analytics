@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, Text
 
-from speech_analytics.bnf import Parser
+from speech_analytics.bnf.parser import Parser
 
 
 class FileViewerApp:
