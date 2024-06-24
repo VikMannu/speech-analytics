@@ -1,7 +1,8 @@
 import re
-from typing import Optional, Dict
+from typing import List, Optional, Dict
 
-from speech_analytics.read_file.read_file import ReadFile, WordInfo
+from speech_analytics.models.word_info import WordInfo
+from speech_analytics.read_file.read_file import ReadFile
 
 
 class Classify:
@@ -17,7 +18,7 @@ class Classify:
         self.words: Optional[Dict[str, WordInfo]] = ReadFile.read_words()
         self.words_keys = None
 
-    def extract_and_remove_substring(self, substrings):
+    def extract_and_remove_substring(self, substrings: List[str]):
         found_substrings = []
         modified_sentence = self.sentence
 
@@ -26,21 +27,22 @@ class Classify:
             regex = re.compile(r'(' + re.escape(substring) + r')')
 
             # Buscamos la subcadena en la oración
-            match = regex.search(modified_sentence)
+            matches = regex.findall(modified_sentence)
 
-            if match:
-                # Extraemos la subcadena encontrada
-                extracted_substring = match.group(1)
-                found_substrings.append(extracted_substring)
+            if matches:
+                # Añadimos todas las coincidencias encontradas
+                found_substrings.extend(matches)
 
-                # Removemos la subcadena encontrada del original
+                # Removemos todas las subcadenas encontradas del original
                 modified_sentence = regex.sub('', modified_sentence)
 
-            self.filtered_sentence = re.sub(r'_{2,}', '_', modified_sentence).strip('_')
+        # Eliminamos los guiones bajos adicionales
+        self.filtered_sentence = re.sub(r'_{2,}', '_', modified_sentence).strip('_')
+
         return found_substrings
 
     def classify(self):
         self.greetings_keys = self.extract_and_remove_substring(list(self.greetings.keys()))
-        self.farewells_keys = self.extract_and_remove_substring(self.farewells.keys())
-        self.phrases_keys = self.extract_and_remove_substring(self.phrases.keys())
+        self.farewells_keys = self.extract_and_remove_substring(list(self.farewells.keys()))
+        self.phrases_keys = self.extract_and_remove_substring(list(self.phrases.keys()))
         self.words_keys = self.extract_and_remove_substring(list(self.words.keys()))
