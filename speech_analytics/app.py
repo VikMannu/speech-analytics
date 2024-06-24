@@ -49,16 +49,23 @@ class App(QMainWindow):
             # Captura el ValueError y muestra el mensaje de error
             QMessageBox.critical(self, 'Error', f'Error de valor: {str(ve)}')
 
-    def display_results(self, text, classify):
+    def display_results(self, text: str, classify: Classify):
         self.text_display.clear()
         self.text_display.insertPlainText(text)
         self.text_display.insertPlainText("\n\n--- Resumen ---\n")
         self.text_display.insertPlainText(f"Palabras: {classify.sentence}\n")
-        print(type(classify.sentence))
-        self.text_display.insertPlainText(f"Saludos: {', '.join(classify.greetings_keys)}\n")
-        self.text_display.insertPlainText(f"Despedidas: {', '.join(classify.farewells_keys)}\n")
-        self.text_display.insertPlainText(f"Frases: {', '.join(classify.phrases_keys)}\n")
-        self.text_display.insertPlainText(f"Palabras encontradas: {', '.join(classify.words_keys)}\n")
+
+        greetings = ", ".join(f"{key}: {value}" for key, value in classify.greetings_keys.items())
+        self.text_display.insertPlainText(f"Saludos: {greetings}\n")
+
+        farewells = ", ".join(f"{key}: {value}" for key, value in classify.farewells_keys.items())
+        self.text_display.insertPlainText(f"Despedidas: {farewells}\n")
+
+        phrases = ", ".join(f"{key}: {value}" for key, value in classify.phrases_keys.items())
+        self.text_display.insertPlainText(f"Frases: {phrases}\n")
+
+        words = ", ".join(f"{key}: {value}" for key, value in classify.words_keys.items())
+        self.text_display.insertPlainText(f"Palabras encontradas: {words}\n")
 
 
 if __name__ == "__main__":

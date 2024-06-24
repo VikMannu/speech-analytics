@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 from typing import List, Optional, Dict
 
 from speech_analytics.models.word_info import WordInfo
@@ -10,16 +11,16 @@ class Classify:
         self.sentence = sentence
         self.filtered_sentence = sentence
         self.greetings: Optional[Dict[str, WordInfo]] = ReadFile.read_greetings()
-        self.greetings_keys = None
+        self.greetings_keys: Optional[defaultdict[int]] = None
         self.farewells: Optional[Dict[str, WordInfo]] = ReadFile.read_farewells()
-        self.farewells_keys = None
+        self.farewells_keys: Optional[defaultdict[int]] = None
         self.phrases: Optional[Dict[str, WordInfo]] = ReadFile.read_phrases()
-        self.phrases_keys = None
+        self.phrases_keys: Optional[defaultdict[int]] = None
         self.words: Optional[Dict[str, WordInfo]] = ReadFile.read_words()
-        self.words_keys = None
+        self.words_keys: Optional[defaultdict[int]] = None
 
     def extract_and_remove_substring(self, substrings: List[str]):
-        found_substrings = []
+        found_substrings = defaultdict(int)
         modified_sentence = self.sentence
 
         for substring in substrings:
@@ -30,10 +31,11 @@ class Classify:
             matches = regex.findall(modified_sentence)
 
             if matches:
-                # Añadimos todas las coincidencias encontradas
-                found_substrings.extend(matches)
+                for match in matches:
+                    # Añadimos todas las coincidencias encontradas
+                    found_substrings[match] += 1
 
-                # Removemos todas las subcadenas encontradas del original
+                    # Removemos todas las subcadenas encontradas del original
                 modified_sentence = regex.sub('', modified_sentence)
 
         # Eliminamos los guiones bajos adicionales
