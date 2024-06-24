@@ -1,5 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QVBoxLayout, QWidget, QFileDialog
+
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QVBoxLayout, QWidget, QFileDialog, \
+    QMessageBox
+
 from speech_analytics.bnf.parser import Parser
 from speech_analytics.classify.classify import Classify
 
@@ -37,10 +40,14 @@ class App(QMainWindow):
         with open(filepath, "r") as file:
             text = file.read()
 
-        parser = Parser(text)
-        classify = Classify(parser.parse())
-        classify.classify()
-        self.display_results(text, classify)
+        try:
+            parser = Parser(text)
+            classify = Classify(parser.parse())
+            classify.classify()
+            self.display_results(text, classify)
+        except ValueError as ve:
+            # Captura el ValueError y muestra el mensaje de error
+            QMessageBox.critical(self, 'Error', f'Error de valor: {str(ve)}')
 
     def display_results(self, text, classify):
         self.text_display.clear()
