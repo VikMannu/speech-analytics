@@ -1,0 +1,164 @@
+[
+  {
+    "buen_día": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "buenos_días": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "buenos_tardes": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "buenos_noches": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "cómo_le_va": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "cómo_te_va": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "qué_tal": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "cómo_se_encuentra": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "hola": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "mucho_gusto": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "buenas": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "le_saluda": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "te_saluda": {
+      "token": "GREETING",
+      "weight": 5
+    }
+  },
+  {
+    "hasta_luego": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "hasta_pronto": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "hasta_la_próxima": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "hablamos": {
+      "token": "FAREWELL",
+      "weight": 2
+    }
+  },
+  {
+    "estamos_en_contacto": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "estaremos_en_contacto": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "adiós": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "chau": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "que_tenga_un_buen_día": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "que_le_vaya_bien": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "que_tenga_un_buen_resto_de_jornada": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "nos_estaremos_comunicando": {
+      "token": "FAREWELL",
+      "weight": 5
+    }
+  },
+  {
+    "gracias": {
+      "token": "GOOD",
+      "weight": 5
+    }
+  },
+  {
+    "porquería": {
+      "token": "BAD",
+      "weight": 5
+    }
+  }
+]

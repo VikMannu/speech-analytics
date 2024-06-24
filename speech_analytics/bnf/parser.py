@@ -1,6 +1,6 @@
 """
 BNF
-<sentence> ::= <word> <elements> { [word] + [elements] }
+<sentence> ::= <word> <elements> { join([word] + [elements]) }
                 | <punctuation> <elements> { [elements] }
 
 <elements> ::= <word> <elements> { [word] + [elements] }
@@ -54,10 +54,10 @@ class Parser:
 
     def __sentence(self):
         if self.__is_letter(self.current_token):
-            return [self.__word()] + self.__elements()
+            return '_'.join([self.__word()] + self.__elements())
         else:
             self.__punctuation()
-            return self.__elements()
+            return '_'.join(self.__elements())
 
     def __elements(self):
         if self.current_token is None:
