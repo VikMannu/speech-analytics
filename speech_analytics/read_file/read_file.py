@@ -13,12 +13,14 @@ class ReadFile:
         try:
             with open(file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
+                file.close()
 
                 word_info_dict = {
                     key: WordInfo(token=TokenType(value["token"]), weight=value["weight"])
                     for key, value in data.items()
                 }
-                return word_info_dict
+
+            return word_info_dict
         except (FileNotFoundError, IOError) as e:
             print(f"Error al leer el archivo: {e}")
             return None

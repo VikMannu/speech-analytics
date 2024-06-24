@@ -24,13 +24,25 @@ class App:
         )
         if not filepath:
             return
+
         with open(filepath, "r") as file:
             text = file.read()
-            parser = Parser(text)
-            classify = Classify(parser.parse())
-            classify.classify()
+
+        parser = Parser(text)
+        classify = Classify(parser.parse())
+        classify.classify()
+        self.display_results(text, classify)
+
+    def display_results(self, text, classify):
         self.text_display.delete(1.0, tk.END)
         self.text_display.insert(tk.END, text)
+        # Configurar el tag "white" para que el texto sea blanco
+        self.text_display.tag_configure("white", foreground="white")
+        self.text_display.insert(tk.END, "\n\n--- Resumen ---\n")
+        self.text_display.insert(tk.END, f"Saludos: {', '.join(classify.greetings_keys)}\n")
+        self.text_display.insert(tk.END, f"Despedidas: {', '.join(classify.farewells_keys)}\n")
+        self.text_display.insert(tk.END, f"Frases: {', '.join(classify.phrases_keys)}\n")
+        self.text_display.insert(tk.END, f"Palabras encontradas: {', '.join(classify.words)}\n")
 
 
 if __name__ == "__main__":
