@@ -45,5 +45,9 @@ class ReadFile:
         return cls.read_json('../../data/greetings.json')
 
     @classmethod
+    def read_phrases(cls):
+        return cls.read_json('../../data/phrases.json')
+
+    @classmethod
     def read_words(cls):
         return cls.read_json('../../data/words.json')

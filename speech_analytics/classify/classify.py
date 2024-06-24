@@ -8,6 +8,7 @@ class Classify:
         self.sentence = sentence
         self.greetings = ReadFile.read_greetings()
         self.farewells = ReadFile.read_farewells()
+        self.phrases = ReadFile.read_phrases()
         self.words = ReadFile.read_words()
 
     def extract_and_remove_substring(self, substrings):
@@ -35,9 +36,11 @@ class Classify:
     def classify(self):
         greetings_keys = self.extract_and_remove_substring(list(self.greetings.keys()))
         farewells_keys = self.extract_and_remove_substring(self.farewells.keys())
+        phrases_keys = self.extract_and_remove_substring(self.phrases.keys())
         words_keys = self.extract_and_remove_substring(list(self.words.keys()))
 
         print(farewells_keys)
         print(greetings_keys)
+        print(phrases_keys)
         print(words_keys)
         print(self.sentence.split('_'))
