@@ -1,15 +1,16 @@
 import re
+from typing import Optional, Dict
 
-from speech_analytics.read_file.read_file import ReadFile
+from speech_analytics.read_file.read_file import ReadFile, WordInfo
 
 
 class Classify:
     def __init__(self, sentence):
         self.sentence = sentence
-        self.greetings = ReadFile.read_greetings()
-        self.farewells = ReadFile.read_farewells()
-        self.phrases = ReadFile.read_phrases()
-        self.words = ReadFile.read_words()
+        self.greetings: Optional[Dict[str, WordInfo]] = ReadFile.read_greetings()
+        self.farewells: Optional[Dict[str, WordInfo]] = ReadFile.read_farewells()
+        self.phrases: Optional[Dict[str, WordInfo]] = ReadFile.read_phrases()
+        self.words: Optional[Dict[str, WordInfo]] = ReadFile.read_words()
 
     def extract_and_remove_substring(self, substrings):
         found_substrings = []
@@ -44,3 +45,20 @@ class Classify:
         print(phrases_keys)
         print(words_keys)
         print(self.sentence.split('_'))
+
+        score = 0
+
+        if greetings_keys:
+            for greeting in greetings_keys:
+                print(self.greetings[greeting])
+                score = score + self.greetings[greeting].weight
+                print(score)
+        else:
+            print('No se cumplió con los requisitos mínimos de saludo')
+
+        if farewells_keys:
+            for farewell in farewells_keys:
+                score = score + self.farewells[farewell].weight
+                print(score)
+        else:
+            print('No se cumplió con los requisitos mínimos de despedida')
