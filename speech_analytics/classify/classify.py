@@ -29,7 +29,7 @@ class Classify:
                 # Removemos la subcadena encontrada del original
                 modified_sentence = regex.sub('', modified_sentence)
 
-            self.sentence = modified_sentence.strip('_')
+            self.sentence = re.sub(r'_{2,}', '_', modified_sentence).strip('_')
         return found_substrings
 
     def classify(self):
@@ -40,4 +40,4 @@ class Classify:
         print(farewells_keys)
         print(greetings_keys)
         print(words_keys)
-        print(self.sentence)
+        print(self.sentence.split('_'))
