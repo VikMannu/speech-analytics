@@ -1,9 +1,11 @@
 import json
 import os
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional, List, TypeAlias
 
 from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.models.token_type import TokenType
+
+Lexicon: TypeAlias = Dict[str, List[Lexeme]]
 
 
 class FileManager:
@@ -33,7 +35,7 @@ class FileManager:
             print(f"Error al parsear el archivo JSON: {e}")
 
     @classmethod
-    def read_lexicon(cls) -> Optional[Dict[str, List[Lexeme]]]:
+    def read_lexicon(cls) -> Optional[Lexicon]:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_dir, '../../data/lexicon.json')
         data = cls.read_json(file_path)

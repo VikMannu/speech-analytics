@@ -1,7 +1,7 @@
 from collections import deque
 from typing import List, Optional, Dict
 
-from speech_analytics.file_manager.file_manager import FileManager
+from speech_analytics.file_manager.file_manager import FileManager, Lexicon
 from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.models.token_type import TokenType
 
@@ -9,7 +9,7 @@ from speech_analytics.models.token_type import TokenType
 class MinimalTokenizer:
     def __init__(self, sentence: List[str]):
         self.sentence = sentence
-        self.lexicon: Dict[str, List[Lexeme]] = FileManager.read_lexicon()
+        self.lexicon: Lexicon = FileManager.read_lexicon()
         self.lexemes_found: List[Lexeme] = []
         self.lexemes_not_found: List[str] = []
         self.token_types_found: set[TokenType] = set()
