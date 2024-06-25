@@ -15,6 +15,14 @@ class MinimalTokenizer:
         self.token_types_found: set[TokenType] = set()
 
     @property
+    def has_greeting(self) -> bool:
+        return TokenType.GREETING in self.token_types_found
+
+    @property
+    def has_farewell(self) -> bool:
+        return TokenType.FAREWELL in self.token_types_found
+
+    @property
     def evaluation(self) -> Tuple[str, float]:
         good_sum, bad_sum, greeting_weight, farewell_weight = self.__categorize_and_sum_weights()
         normalized_good, normalized_bad, normalized_greeting, normalized_farewell = self.__normalize_weights(good_sum, bad_sum, greeting_weight, farewell_weight)
@@ -102,11 +110,3 @@ class MinimalTokenizer:
     @staticmethod
     def __is_present_in_order(str1: str, str2: str) -> bool:
         return str2.startswith(str1)
-
-    @property
-    def has_greeting(self) -> bool:
-        return TokenType.GREETING in self.token_types_found
-
-    @property
-    def has_farewell(self) -> bool:
-        return TokenType.FAREWELL in self.token_types_found
