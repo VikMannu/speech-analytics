@@ -6,7 +6,10 @@ class Lexeme:
         self.key: str = '_'.join(lexemes)
         self.lexemes = lexemes
         self.token = token
-        self.weight = weight
+        if token == TokenType.NEUTRAL:
+            self.weight = 0
+        else:
+            self.weight = weight
         self.length = len(lexemes)
 
     @property

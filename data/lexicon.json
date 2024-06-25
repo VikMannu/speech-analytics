@@ -329,5 +329,16 @@
             "weight": 5,
             "length": 4
         }
+    },
+    "a": {
+        "a": {
+            "key": "a",
+            "lexemes": [
+                "a"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
+        }
     }
 }

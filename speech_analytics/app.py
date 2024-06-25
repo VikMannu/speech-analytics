@@ -60,12 +60,26 @@ class App(QMainWindow):
             self.text_display.clear()
             self.text_display.insertPlainText(self.text)
             self.text_display.insertPlainText("\n\n--- Resumen ---\n")
-            self.text_display.insertPlainText(f"Palabras encontradas:\n")
-            for lexeme in minimal_tokenizer.lexemes_found:
+            self.text_display.insertPlainText(f"\nEvaluación:\n")
+            if minimal_tokenizer.has_greeting:
+                self.text_display.insertPlainText(f"Contiene saludo\n")
+            else:
+                self.text_display.insertPlainText(f"NO contiene saludo\n")
+
+            if minimal_tokenizer.has_farewell:
+                self.text_display.insertPlainText(f"Contiene despedida\n")
+            else:
+                self.text_display.insertPlainText(f"NO contiene despedida\n")
+
+            message, score = minimal_tokenizer.evaluation
+            self.text_display.insertPlainText(f"Evaluación final: {message}({score})\n")
+
+            self.text_display.insertPlainText(f"\nPalabras tokenizadas:\n")
+            for lexeme in minimal_tokenizer.tokenized_lexemes:
                 self.text_display.insertPlainText(f"{lexeme}\n")
 
-            self.text_display.insertPlainText(f"\nPalabras no encontradas:\n")
-            for word in minimal_tokenizer.lexemes_not_found:
+            self.text_display.insertPlainText(f"\nPalabras no tokenizadas:\n")
+            for word in minimal_tokenizer.non_tokenized_lexemes:
                 self.text_display.insertPlainText(f"{word}\n")
         except ValueError as ve:
             # Captura el ValueError y muestra el mensaje de error
