@@ -18,11 +18,16 @@ class MinimalTokenizer:
             if word in self.lexicon:
                 lexemes = self.lexicon[word]
                 lexeme = self.__search_matches(sentence_to_map, lexemes)
-                self.lexemes_found.append(lexeme)
+                if lexeme is not None:
+                    self.lexemes_found.append(lexeme)
+                    for _ in range(lexeme.length):
+                        sentence_to_map.pop(0)
+                else:
+                    self.lexemes_not_found.append(sentence_to_map.pop(0))
             else:
-                self.lexemes_not_found = sentence_to_map.pop(0)
+                self.lexemes_not_found.append(sentence_to_map.pop(0))
 
-    def __search_matches(self, sentence_to_map: List[str], lexemes: List[Lexeme]) -> Lexeme:
+    def __search_matches(self, sentence_to_map: List[str], lexemes: List[Lexeme]) -> Optional[Lexeme]:
         search_results: List[Lexeme] = []
         for lexeme in lexemes:
             if len(lexeme.lexemes) > 1:
@@ -31,7 +36,10 @@ class MinimalTokenizer:
             else:
                 search_results.append(lexeme)
 
-        return max(search_results, key=lambda lexeme: lexeme.length)
+        if search_results:
+            return max(search_results, key=lambda lexeme: lexeme.length)
+
+        return None
 
     @staticmethod
     def __is_present_in_order(list1: List[str], list2: List[str]) -> bool:
@@ -41,6 +49,3 @@ class MinimalTokenizer:
 
         # Use startswith to check if list1 is at the beginning of list2
         return str_list2.startswith(str_list1)
-
-    def tokenize(self):
-        print('Classifying...')

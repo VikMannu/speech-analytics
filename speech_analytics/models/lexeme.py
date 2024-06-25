@@ -7,3 +7,6 @@ class Lexeme:
         self.token = token
         self.weight = weight
         self.length = len(lexemes)
+
+    def __str__(self):
+        return f"Lexema({' '.join(map(str, self.lexemes))}): {self.token.title}"

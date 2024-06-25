@@ -55,7 +55,6 @@ class App(QMainWindow):
         self.text_display.insertPlainText("\n\n--- Resumen ---\n")
         self.text_display.insertPlainText(f"Palabras encontradas:\n")
         for lexeme in minimal_tokenizer.lexemes_found:
-            print(lexeme)
             self.text_display.insertPlainText(f"{lexeme}\n")
 
         self.text_display.insertPlainText(f"\nPalabras no encontradas:\n")
