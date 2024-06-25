@@ -22,14 +22,7 @@ class FileManager:
             return None
 
     @staticmethod
-    def update_data(data: Dict[str, Dict[str, Any]], key_to_update: str, new_value: Dict[str, Any]) -> Dict[
-        str, Dict[str, Any]]:
-        """Actualiza un elemento en el diccionario basado en la clave proporcionada."""
-        data[key_to_update] = new_value
-        return data
-
-    @staticmethod
-    def write_json(file_path: str, data: Dict[str, List[Lexeme]]):
+    def write_json(file_path: str, data):
         """Escribe el diccionario en un archivo JSON."""
         try:
             with open(file_path, 'w', encoding='utf-8') as file:
@@ -57,3 +50,9 @@ class FileManager:
             lexicon[key] = lexemes
 
         return lexicon
+
+    @classmethod
+    def update_lexicon(cls, lexicon: Dict[str, List[Lexeme]]):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_dir, '../../data/lexicon.json')
+        cls.write_json(file_path, lexicon)
