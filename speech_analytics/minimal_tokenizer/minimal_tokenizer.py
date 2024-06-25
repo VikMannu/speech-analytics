@@ -2,6 +2,7 @@ from typing import List, Optional
 
 from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.file_manager.file_manager import FileManager
+from speech_analytics.models.token_type import TokenType
 
 
 class MinimalTokenizer:
@@ -10,6 +11,8 @@ class MinimalTokenizer:
         self.lexicon = FileManager.read_lexicon()
         self.lexemes_found: List[Lexeme] = []
         self.lexemes_not_found: List[str] = []
+        self.has_greeting: bool = False
+        self.has_farewell: bool = False
 
     def search_lexemes(self):
         sentence_to_map = self.sentence.copy()
@@ -20,6 +23,10 @@ class MinimalTokenizer:
                 lexeme = self.__search_matches(sentence_to_map, lexemes)
                 if lexeme is not None:
                     self.lexemes_found.append(lexeme)
+                    if lexeme.token == TokenType.GREETING:
+                        self.has_greeting = True
+                    elif lexeme.token == TokenType.FAREWELL:
+                        self.has_farewell = True
                     for _ in range(lexeme.length):
                         sentence_to_map.pop(0)
                 else:
