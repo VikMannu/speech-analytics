@@ -85,7 +85,7 @@
                 "buenas"
             ],
             "token": "NEUTRAL",
-            "weight": 1,
+            "weight": 0,
             "length": 1
         },
         "buenas_tardes": {
@@ -335,6 +335,17 @@
             "key": "a",
             "lexemes": [
                 "a"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
+        }
+    },
+    "de": {
+        "de": {
+            "key": "de",
+            "lexemes": [
+                "de"
             ],
             "token": "NEUTRAL",
             "weight": 0,
