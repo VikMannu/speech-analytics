@@ -9,5 +9,18 @@ class Lexeme:
         self.weight = weight
         self.length = len(lexemes)
 
+    @property
+    def root(self):
+        return self.lexemes[0]
+
+    def to_dict(self):
+        return {
+            'key': self.key,
+            'lexemes': self.lexemes,
+            'token': self.token.value,  # Use .value to get the enum value
+            'weight': self.weight,
+            'length': self.length
+        }
+
     def __str__(self):
-        return f"Lexema({' '.join(map(str, self.lexemes))}): {self.token.title}"
+        return f"Lexema({' '.join(map(str, self.lexemes))}): {self.token.title}({self.weight})"

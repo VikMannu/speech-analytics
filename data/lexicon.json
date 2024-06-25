@@ -1,308 +1,333 @@
 {
-  "gracias": {
     "gracias": {
-      "key": "gracias",
-      "lexemes": [
-        "gracias"
-      ],
-      "token": "GOOD",
-      "weight": 4,
-      "length": 1
-    }
-  },
-  "porquería": {
+        "gracias": {
+            "key": "gracias",
+            "lexemes": [
+                "gracias"
+            ],
+            "token": "GOOD",
+            "weight": 4,
+            "length": 1
+        }
+    },
     "porquería": {
-      "key": "porquería",
-      "lexemes": [
-        "porquería"
-      ],
-      "token": "BAD",
-      "weight": 5,
-      "length": 1
-    }
-  },
-  "por": {
+        "porquería": {
+            "key": "porquería",
+            "lexemes": [
+                "porquería"
+            ],
+            "token": "BAD",
+            "weight": 5,
+            "length": 1
+        }
+    },
     "por": {
-      "key": "por",
-      "lexemes": [
-        "por"
-      ],
-      "token": "NEUTRAL",
-      "weight": 0,
-      "length": 1
+        "por": {
+            "key": "por",
+            "lexemes": [
+                "por"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
+        },
+        "por_favor": {
+            "key": "por_favor",
+            "lexemes": [
+                "por",
+                "favor"
+            ],
+            "token": "GOOD",
+            "weight": 5,
+            "length": 2
+        }
     },
-    "por_favor": {
-      "key": "por_favor",
-      "lexemes": [
-        "por",
-        "favor"
-      ],
-      "token": "GOOD",
-      "weight": 5,
-      "length": 2
-    }
-  },
-  "buen": {
-    "buen_día": {
-      "key": "buen_día",
-      "lexemes": [
-        "buen",
-        "día"
-      ],
-      "token": "GREETING",
-      "weight": 4,
-      "length": 2
-    }
-  },
-  "te": {
-    "te_saluda": {
-      "key": "te_saluda",
-      "lexemes": [
-        "te",
-        "saluda"
-      ],
-      "token": "GREETING",
-      "weight": 5,
-      "length": 2
-    }
-  },
-  "buenos": {
-    "buenos_días": {
-      "key": "buenos_días",
-      "lexemes": [
-        "buenos",
-        "días"
-      ],
-      "token": "GREETING",
-      "weight": 4,
-      "length": 2
-    }
-  },
-  "buenas": {
+    "buen": {
+        "buen_día": {
+            "key": "buen_día",
+            "lexemes": [
+                "buen",
+                "día"
+            ],
+            "token": "GREETING",
+            "weight": 4,
+            "length": 2
+        }
+    },
+    "te": {
+        "te_saluda": {
+            "key": "te_saluda",
+            "lexemes": [
+                "te",
+                "saluda"
+            ],
+            "token": "GREETING",
+            "weight": 5,
+            "length": 2
+        }
+    },
+    "buenos": {
+        "buenos_días": {
+            "key": "buenos_días",
+            "lexemes": [
+                "buenos",
+                "días"
+            ],
+            "token": "GREETING",
+            "weight": 4,
+            "length": 2
+        }
+    },
     "buenas": {
-      "key": "buenas",
-      "lexemes": [
-        "buenas"
-      ],
-      "token": "NEUTRAL",
-      "weight": 1,
-      "length": 1
+        "buenas": {
+            "key": "buenas",
+            "lexemes": [
+                "buenas"
+            ],
+            "token": "NEUTRAL",
+            "weight": 1,
+            "length": 1
+        },
+        "buenas_tardes": {
+            "key": "buenas_tardes",
+            "lexemes": [
+                "buenas",
+                "tardes"
+            ],
+            "token": "GREETING",
+            "weight": 4,
+            "length": 2
+        },
+        "buenas_noches": {
+            "key": "buenas_noches",
+            "lexemes": [
+                "buenas",
+                "noches"
+            ],
+            "token": "GREETING",
+            "weight": 4,
+            "length": 2
+        }
     },
-    "buenas_tardes": {
-      "key": "buenas_tardes",
-      "lexemes": [
-        "buenas",
-        "tardes"
-      ],
-      "token": "GREETING",
-      "weight": 4,
-      "length": 2
+    "cómo": {
+        "cómo_le_va": {
+            "key": "cómo_le_va",
+            "lexemes": [
+                "cómo",
+                "le",
+                "va"
+            ],
+            "token": "GREETING",
+            "weight": 3,
+            "length": 3
+        },
+        "cómo_te_va": {
+            "key": "cómo_te_va",
+            "lexemes": [
+                "cómo",
+                "te",
+                "va"
+            ],
+            "token": "GREETING",
+            "weight": 3,
+            "length": 3
+        },
+        "cómo_se_encuentra": {
+            "key": "cómo_se_encuentra",
+            "lexemes": [
+                "cómo",
+                "se",
+                "encuentra"
+            ],
+            "token": "GREETING",
+            "weight": 3,
+            "length": 3
+        }
     },
-    "buenas_noches": {
-      "key": "buenas_noches",
-      "lexemes": [
-        "buenas",
-        "noches"
-      ],
-      "token": "GREETING",
-      "weight": 4,
-      "length": 2
-    }
-  },
-  "cómo": {
-    "cómo_le_va": {
-      "key": "cómo_le_va",
-      "lexemes": [
-        "cómo",
-        "le",
-        "va"
-      ],
-      "token": "GREETING",
-      "weight": 3,
-      "length": 3
+    "qué": {
+        "qué_tal": {
+            "key": "qué_tal",
+            "lexemes": [
+                "qué",
+                "tal"
+            ],
+            "token": "GREETING",
+            "weight": 2,
+            "length": 2
+        }
     },
-    "cómo_te_va": {
-      "key": "cómo_te_va",
-      "lexemes": [
-        "cómo",
-        "te",
-        "va"
-      ],
-      "token": "GREETING",
-      "weight": 3,
-      "length": 3
-    },
-    "cómo_se_encuentra": {
-      "key": "cómo_se_encuentra",
-      "lexemes": [
-        "cómo",
-        "se",
-        "encuentra"
-      ],
-      "token": "GREETING",
-      "weight": 3,
-      "length": 3
-    }
-  },
-  "qué": {
-    "qué_tal": {
-      "key": "qué_tal",
-      "lexemes": [
-        "qué",
-        "tal"
-      ],
-      "token": "GREETING",
-      "weight": 2,
-      "length": 2
-    }
-  },
-  "hola": {
     "hola": {
-      "key": "hola",
-      "lexemes": [
-        "hola"
-      ],
-      "token": "GREETING",
-      "weight": 1,
-      "length": 1
-    }
-  },
-  "le": {
-    "le_saluda": {
-      "key": "le_saluda",
-      "lexemes": [
-        "le",
-        "saluda"
-      ],
-      "token": "GREETING",
-      "weight": 5,
-      "length": 2
-    }
-  },
-  "hasta": {
-    "hasta_luego": {
-      "key": "hasta_luego",
-      "lexemes": [
-        "hasta",
-        "luego"
-      ],
-      "token": "FAREWELL",
-      "weight": 2,
-      "length": 2
+        "hola": {
+            "key": "hola",
+            "lexemes": [
+                "hola"
+            ],
+            "token": "GREETING",
+            "weight": 1,
+            "length": 1
+        }
     },
-    "hasta_la_próxima": {
-      "key": "hasta_la_próxima",
-      "lexemes": [
-        "hasta",
-        "la",
-        "próxima"
-      ],
-      "token": "FAREWELL",
-      "weight": 3,
-      "length": 3
-    }
-  },
-  "hablamos": {
+    "le": {
+        "le_saluda": {
+            "key": "le_saluda",
+            "lexemes": [
+                "le",
+                "saluda"
+            ],
+            "token": "GREETING",
+            "weight": 5,
+            "length": 2
+        }
+    },
+    "hasta": {
+        "hasta_luego": {
+            "key": "hasta_luego",
+            "lexemes": [
+                "hasta",
+                "luego"
+            ],
+            "token": "FAREWELL",
+            "weight": 2,
+            "length": 2
+        },
+        "hasta_la_próxima": {
+            "key": "hasta_la_próxima",
+            "lexemes": [
+                "hasta",
+                "la",
+                "próxima"
+            ],
+            "token": "FAREWELL",
+            "weight": 3,
+            "length": 3
+        }
+    },
     "hablamos": {
-      "key": "hablamos",
-      "lexemes": [
-        "hablamos"
-      ],
-      "token": "FAREWELL",
-      "weight": 1,
-      "length": 1
-    }
-  },
-  "estamos": {
-    "estamos_en_contacto": {
-      "key": "estamos_en_contacto",
-      "lexemes": [
-        "estamos",
-        "en",
-        "contacto"
-      ],
-      "token": "FAREWELL",
-      "weight": 3,
-      "length": 3
-    }
-  },
-  "estaremos": {
-    "estaremos_en_contacto": {
-      "key": "estaremos_en_contacto",
-      "lexemes": [
-        "estaremos",
-        "en",
-        "contacto"
-      ],
-      "token": "FAREWELL",
-      "weight": 3,
-      "length": 3
-    }
-  },
-  "chau": {
+        "hablamos": {
+            "key": "hablamos",
+            "lexemes": [
+                "hablamos"
+            ],
+            "token": "FAREWELL",
+            "weight": 1,
+            "length": 1
+        }
+    },
+    "estamos": {
+        "estamos_en_contacto": {
+            "key": "estamos_en_contacto",
+            "lexemes": [
+                "estamos",
+                "en",
+                "contacto"
+            ],
+            "token": "FAREWELL",
+            "weight": 3,
+            "length": 3
+        }
+    },
+    "estaremos": {
+        "estaremos_en_contacto": {
+            "key": "estaremos_en_contacto",
+            "lexemes": [
+                "estaremos",
+                "en",
+                "contacto"
+            ],
+            "token": "FAREWELL",
+            "weight": 3,
+            "length": 3
+        }
+    },
     "chau": {
-      "key": "chau",
-      "lexemes": [
-        "chau"
-      ],
-      "token": "FAREWELL",
-      "weight": 1,
-      "length": 1
-    }
-  },
-  "que": {
-    "que_tenga_un_buen_día": {
-      "key": "que_tenga_un_buen_día",
-      "lexemes": [
-        "que",
-        "tenga",
-        "un",
-        "buen",
-        "día"
-      ],
-      "token": "FAREWELL",
-      "weight": 5,
-      "length": 5
+        "chau": {
+            "key": "chau",
+            "lexemes": [
+                "chau"
+            ],
+            "token": "FAREWELL",
+            "weight": 1,
+            "length": 1
+        }
     },
-    "que_le_vaya_bien": {
-      "key": "que_le_vaya_bien",
-      "lexemes": [
-        "que",
-        "le",
-        "vaya",
-        "bien"
-      ],
-      "token": "FAREWELL",
-      "weight": 5,
-      "length": 4
+    "que": {
+        "que_tenga_un_buen_día": {
+            "key": "que_tenga_un_buen_día",
+            "lexemes": [
+                "que",
+                "tenga",
+                "un",
+                "buen",
+                "día"
+            ],
+            "token": "FAREWELL",
+            "weight": 5,
+            "length": 5
+        },
+        "que_le_vaya_bien": {
+            "key": "que_le_vaya_bien",
+            "lexemes": [
+                "que",
+                "le",
+                "vaya",
+                "bien"
+            ],
+            "token": "FAREWELL",
+            "weight": 5,
+            "length": 4
+        },
+        "que_tenga_un_buen_resto_de_jornada": {
+            "key": "que_tenga_un_buen_resto_de_jornada",
+            "lexemes": [
+                "que",
+                "tenga",
+                "un",
+                "buen",
+                "resto",
+                "de",
+                "jornada"
+            ],
+            "token": "FAREWELL",
+            "weight": 5,
+            "length": 7
+        }
     },
-    "que_tenga_un_buen_resto_de_jornada": {
-      "key": "que_tenga_un_buen_resto_de_jornada",
-      "lexemes": [
-        "que",
-        "tenga",
-        "un",
-        "buen",
-        "resto",
-        "de",
-        "jornada"
-      ],
-      "token": "FAREWELL",
-      "weight": 5,
-      "length": 7
+    "nos": {
+        "nos_estaremos_comunicando": {
+            "key": "nos_estaremos_comunicando",
+            "lexemes": [
+                "nos",
+                "estaremos",
+                "comunicando"
+            ],
+            "token": "FAREWELL",
+            "weight": 4,
+            "length": 3
+        }
+    },
+    "joanna": {
+        "joanna": {
+            "key": "joanna",
+            "lexemes": [
+                "joanna"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
+        }
+    },
+    "en": {
+        "en_qué_puedo_ayudarle": {
+            "key": "en_qué_puedo_ayudarle",
+            "lexemes": [
+                "en",
+                "qué",
+                "puedo",
+                "ayudarle"
+            ],
+            "token": "GREETING",
+            "weight": 5,
+            "length": 4
+        }
     }
-  },
-  "nos": {
-    "nos_estaremos_comunicando": {
-      "key": "nos_estaremos_comunicando",
-      "lexemes": [
-        "nos",
-        "estaremos",
-        "comunicando"
-      ],
-      "token": "FAREWELL",
-      "weight": 4,
-      "length": 3
-    }
-  }
 }

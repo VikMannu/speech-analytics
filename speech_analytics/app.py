@@ -4,7 +4,10 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, Q
     QMessageBox
 
 from speech_analytics.bnf.parser import Parser
+from speech_analytics.file_manager.file_manager import FileManager
 from speech_analytics.minimal_tokenizer.minimal_tokenizer import MinimalTokenizer
+from speech_analytics.models.lexeme import Lexeme
+from speech_analytics.ui.add_lexeme import AddLexeme
 
 
 class App(QMainWindow):
@@ -12,9 +15,15 @@ class App(QMainWindow):
         super().__init__()
         self.setWindowTitle("Speech Analytics")
 
-        # Crear un botón para abrir el archivo
+        self.text: str = ""
+
+        # Botón para abrir el archivo
         self.open_button = QPushButton("Abrir Archivo", self)
         self.open_button.clicked.connect(self.open_file)
+
+        # Botón para abrir el diálogo personalizado
+        self.open_dialog_button = QPushButton("Agregar Lexema", self)
+        self.open_dialog_button.clicked.connect(self.open_dialog)
 
         # Crear un área de texto para mostrar el contenido del archivo
         self.text_display = QTextEdit(self)
@@ -25,6 +34,7 @@ class App(QMainWindow):
         # Layout principal
         layout = QVBoxLayout()
         layout.addWidget(self.open_button)
+        layout.addWidget(self.open_dialog_button)
         layout.addWidget(self.text_display)
 
         # Widget central
@@ -38,28 +48,35 @@ class App(QMainWindow):
             return
 
         with open(filepath, "r") as file:
-            text = file.read()
+            self.text = file.read()
 
+        self.display_results()
+
+    def display_results(self):
         try:
-            parser = Parser(text)
+            parser = Parser(self.text)
             minimal_tokenizer = MinimalTokenizer(parser.parse())
             minimal_tokenizer.search_lexemes()
-            self.display_results(text, minimal_tokenizer)
+            self.text_display.clear()
+            self.text_display.insertPlainText(self.text)
+            self.text_display.insertPlainText("\n\n--- Resumen ---\n")
+            self.text_display.insertPlainText(f"Palabras encontradas:\n")
+            for lexeme in minimal_tokenizer.lexemes_found:
+                self.text_display.insertPlainText(f"{lexeme}\n")
+
+            self.text_display.insertPlainText(f"\nPalabras no encontradas:\n")
+            for word in minimal_tokenizer.lexemes_not_found:
+                self.text_display.insertPlainText(f"{word}\n")
         except ValueError as ve:
             # Captura el ValueError y muestra el mensaje de error
             QMessageBox.critical(self, 'Error', f'Error de valor: {str(ve)}')
 
-    def display_results(self, text: str, minimal_tokenizer: MinimalTokenizer):
-        self.text_display.clear()
-        self.text_display.insertPlainText(text)
-        self.text_display.insertPlainText("\n\n--- Resumen ---\n")
-        self.text_display.insertPlainText(f"Palabras encontradas:\n")
-        for lexeme in minimal_tokenizer.lexemes_found:
-            self.text_display.insertPlainText(f"{lexeme}\n")
-
-        self.text_display.insertPlainText(f"\nPalabras no encontradas:\n")
-        for word in minimal_tokenizer.lexemes_not_found:
-            self.text_display.insertPlainText(f"{word}\n")
+    def open_dialog(self):
+        dialog = AddLexeme()
+        if dialog.exec_() == dialog.Accepted:
+            lexeme = dialog.get_data()
+            FileManager.update_lexicon(lexeme)
+            self.display_results()
 
 
 if __name__ == "__main__":
