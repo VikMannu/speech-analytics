@@ -43,6 +43,7 @@ class App(QMainWindow):
         try:
             parser = Parser(text)
             minimal_tokenizer = MinimalTokenizer(parser.parse())
+            minimal_tokenizer.search_lexemes()
             self.display_results(text, minimal_tokenizer)
         except ValueError as ve:
             # Captura el ValueError y muestra el mensaje de error
@@ -52,6 +53,15 @@ class App(QMainWindow):
         self.text_display.clear()
         self.text_display.insertPlainText(text)
         self.text_display.insertPlainText("\n\n--- Resumen ---\n")
+        self.text_display.insertPlainText(f"Palabras encontradas:\n")
+        for lexeme in minimal_tokenizer.lexemes_found:
+            print(lexeme)
+            self.text_display.insertPlainText(f"{lexeme}\n")
+
+        self.text_display.insertPlainText(f"\nPalabras no encontradas:\n")
+        for word in minimal_tokenizer.lexemes_not_found:
+            print(word)
+            self.text_display.insertPlainText(f"{word}\n")
 
 
 if __name__ == "__main__":

@@ -152,15 +152,17 @@
       "length": 1
     }
   ],
-  "le": {
-    "lexemes": [
-      "le",
-      "saluda"
-    ],
-    "token": "GREETING",
-    "weight": 5,
-    "length": 2
-  },
+  "le": [
+    {
+      "lexemes": [
+        "le",
+        "saluda"
+      ],
+      "token": "GREETING",
+      "weight": 5,
+      "length": 2
+    }
+  ],
   "hasta": [
     {
       "lexemes": [
