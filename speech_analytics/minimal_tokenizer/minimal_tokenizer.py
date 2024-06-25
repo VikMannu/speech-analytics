@@ -1,5 +1,5 @@
 from collections import deque
-from typing import List, Optional, Dict
+from typing import List, Optional
 
 from speech_analytics.file_manager.file_manager import FileManager, Lexicon
 from speech_analytics.models.lexeme import Lexeme
@@ -19,7 +19,7 @@ class MinimalTokenizer:
         while sentence_to_map:
             word = sentence_to_map[0]
             if word in self.lexicon:
-                lexemes = self.lexicon[word]
+                lexemes = list(self.lexicon[word].values())
                 lexeme = self.__search_best_match(list(sentence_to_map), lexemes)
                 if lexeme:
                     self.lexemes_found.append(lexeme)
@@ -32,17 +32,16 @@ class MinimalTokenizer:
                 self.lexemes_not_found.append(sentence_to_map.popleft())
 
     def __search_best_match(self, sentence_to_map: List[str], lexemes: List[Lexeme]) -> Optional[Lexeme]:
+        sentence = '_'.join(sentence_to_map)
         search_results: List[Lexeme] = [
-            lexeme for lexeme in lexemes if self.__is_present_in_order(lexeme.lexemes, sentence_to_map)
+            lexeme for lexeme in lexemes if self.__is_present_in_order(lexeme.key, sentence)
         ]
 
         return max(search_results, key=lambda lexeme: lexeme.length, default=None)
 
     @staticmethod
-    def __is_present_in_order(list1: List[str], list2: List[str]) -> bool:
-        str_list1 = ' '.join(list1)
-        str_list2 = ' '.join(list2)
-        return str_list2.startswith(str_list1)
+    def __is_present_in_order(str1: str, str2: str) -> bool:
+        return str2.startswith(str1)
 
     @property
     def has_greeting(self) -> bool:

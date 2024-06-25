@@ -1,6 +1,7 @@
 {
-  "gracias": [
-    {
+  "gracias": {
+    "gracias": {
+      "key": "gracias",
       "lexemes": [
         "gracias"
       ],
@@ -8,19 +9,21 @@
       "weight": 4,
       "length": 1
     }
-  ],
-  "porquería": [
-    {
+  },
+  "porquería": {
+    "porquería": {
+      "key": "porquería",
       "lexemes": [
-        "porqueria"
+        "porquería"
       ],
       "token": "BAD",
       "weight": 5,
       "length": 1
     }
-  ],
-  "por": [
-    {
+  },
+  "por": {
+    "por": {
+      "key": "por",
       "lexemes": [
         "por"
       ],
@@ -28,7 +31,8 @@
       "weight": 0,
       "length": 1
     },
-    {
+    "por_favor": {
+      "key": "por_favor",
       "lexemes": [
         "por",
         "favor"
@@ -37,9 +41,10 @@
       "weight": 5,
       "length": 2
     }
-  ],
-  "buen": [
-    {
+  },
+  "buen": {
+    "buen_dia": {
+      "key": "buen_dia",
       "lexemes": [
         "buen",
         "día"
@@ -48,9 +53,10 @@
       "weight": 4,
       "length": 2
     }
-  ],
-  "te": [
-    {
+  },
+  "te": {
+    "te_saluda": {
+      "key": "te_saluda",
       "lexemes": [
         "te",
         "saluda"
@@ -59,9 +65,10 @@
       "weight": 5,
       "length": 2
     }
-  ],
-  "buenos": [
-    {
+  },
+  "buenos": {
+    "buenos_días": {
+      "key": "buenos_días",
       "lexemes": [
         "buenos",
         "días"
@@ -70,17 +77,19 @@
       "weight": 4,
       "length": 2
     }
-  ],
-  "buenas": [
-    {
+  },
+  "buenas": {
+    "buenas": {
+      "key": "buenas",
       "lexemes": [
         "buenas"
       ],
-      "token": "GREETING",
+      "token": "NEUTRAL",
       "weight": 1,
       "length": 1
     },
-    {
+    "buenas_tardes": {
+      "key": "buenas_tardes",
       "lexemes": [
         "buenas",
         "tardes"
@@ -89,7 +98,8 @@
       "weight": 4,
       "length": 2
     },
-    {
+    "buenas_noches": {
+      "key": "buenas_noches",
       "lexemes": [
         "buenas",
         "noches"
@@ -98,9 +108,10 @@
       "weight": 4,
       "length": 2
     }
-  ],
-  "cómo": [
-    {
+  },
+  "cómo": {
+    "cómo_le_va": {
+      "key": "cómo_le_va",
       "lexemes": [
         "cómo",
         "le",
@@ -110,7 +121,8 @@
       "weight": 3,
       "length": 3
     },
-    {
+    "cómo_te_va": {
+      "key": "cómo_te_va",
       "lexemes": [
         "cómo",
         "te",
@@ -120,7 +132,8 @@
       "weight": 3,
       "length": 3
     },
-    {
+    "cómo_se_encuentra": {
+      "key": "cómo_se_encuentra",
       "lexemes": [
         "cómo",
         "se",
@@ -130,9 +143,10 @@
       "weight": 3,
       "length": 3
     }
-  ],
-  "qué": [
-    {
+  },
+  "qué": {
+    "qué_tal": {
+      "key": "qué_tal",
       "lexemes": [
         "qué",
         "tal"
@@ -141,9 +155,10 @@
       "weight": 2,
       "length": 2
     }
-  ],
-  "hola": [
-    {
+  },
+  "hola": {
+    "hola": {
+      "key": "hola",
       "lexemes": [
         "hola"
       ],
@@ -151,9 +166,10 @@
       "weight": 1,
       "length": 1
     }
-  ],
-  "le": [
-    {
+  },
+  "le": {
+    "le_saluda": {
+      "key": "le_saluda",
       "lexemes": [
         "le",
         "saluda"
@@ -162,9 +178,10 @@
       "weight": 5,
       "length": 2
     }
-  ],
-  "hasta": [
-    {
+  },
+  "hasta": {
+    "hasta_luego": {
+      "key": "hasta_luego",
       "lexemes": [
         "hasta",
         "luego"
@@ -173,7 +190,8 @@
       "weight": 2,
       "length": 2
     },
-    {
+    "hasta_la_próxima": {
+      "key": "hasta_la_próxima",
       "lexemes": [
         "hasta",
         "la",
@@ -183,9 +201,10 @@
       "weight": 3,
       "length": 3
     }
-  ],
-  "hablamos": [
-    {
+  },
+  "hablamos": {
+    "hablamos": {
+      "key": "hablamos",
       "lexemes": [
         "hablamos"
       ],
@@ -193,9 +212,10 @@
       "weight": 1,
       "length": 1
     }
-  ],
-  "estamos": [
-    {
+  },
+  "estamos": {
+    "estamos_en_contacto": {
+      "key": "estamos_en_contacto",
       "lexemes": [
         "estamos",
         "en",
@@ -205,9 +225,10 @@
       "weight": 3,
       "length": 3
     }
-  ],
-  "estaremos": [
-    {
+  },
+  "estaremos": {
+    "estaremos_en_contacto": {
+      "key": "estaremos_en_contacto",
       "lexemes": [
         "estaremos",
         "en",
@@ -217,9 +238,10 @@
       "weight": 3,
       "length": 3
     }
-  ],
-  "chau": [
-    {
+  },
+  "chau": {
+    "chau": {
+      "key": "chau",
       "lexemes": [
         "chau"
       ],
@@ -227,9 +249,10 @@
       "weight": 1,
       "length": 1
     }
-  ],
-  "que": [
-    {
+  },
+  "que": {
+    "que_tenga_un_buen_día": {
+      "key": "que_tenga_un_buen_día",
       "lexemes": [
         "que",
         "tenga",
@@ -241,7 +264,8 @@
       "weight": 5,
       "length": 5
     },
-    {
+    "que_le_vaya_bien": {
+      "key": "que_le_vaya_bien",
       "lexemes": [
         "que",
         "le",
@@ -252,7 +276,8 @@
       "weight": 5,
       "length": 4
     },
-    {
+    "que_tenga_un_buen_resto_de_jornada": {
+      "key": "que_tenga_un_buen_resto_de_jornada",
       "lexemes": [
         "que",
         "tenga",
@@ -266,9 +291,10 @@
       "weight": 5,
       "length": 7
     }
-  ],
-  "nos": [
-    {
+  },
+  "nos": {
+    "nos_estaremos_comunicando": {
+      "key": "nos_estaremos_comunicando",
       "lexemes": [
         "nos",
         "estaremos",
@@ -278,5 +304,5 @@
       "weight": 4,
       "length": 3
     }
-  ]
+  }
 }

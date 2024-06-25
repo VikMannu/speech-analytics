@@ -1,11 +1,11 @@
 import json
 import os
-from typing import Dict, Optional, List, TypeAlias
+from typing import Dict, List, TypeAlias, Optional
 
 from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.models.token_type import TokenType
 
-Lexicon: TypeAlias = Dict[str, List[Lexeme]]
+Lexicon: TypeAlias = Dict[str, Dict[str, Lexeme]]
 
 
 class FileManager:
@@ -39,16 +39,16 @@ class FileManager:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(script_dir, '../../data/lexicon.json')
         data = cls.read_json(file_path)
-        lexicon = {}
+        lexicon: Lexicon = {}
         for key, value in data.items():
-            lexemes = []
-            for item in value:
+            lexemes = {}
+            for lexeme_key, item in value.items():  # iterate over values in the nested dictionary
                 lexeme = Lexeme(
                     lexemes=item['lexemes'],
                     token=TokenType[item['token']],
                     weight=item['weight']
                 )
-                lexemes.append(lexeme)
+                lexemes[lexeme_key] = lexeme
             lexicon[key] = lexemes
 
         return lexicon
