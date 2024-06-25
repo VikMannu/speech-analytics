@@ -43,8 +43,8 @@
     }
   },
   "buen": {
-    "buen_dia": {
-      "key": "buen_dia",
+    "buen_día": {
+      "key": "buen_día",
       "lexemes": [
         "buen",
         "día"
