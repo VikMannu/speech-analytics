@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Dict, Any, Optional, List, TypeAlias
+from typing import Dict, Optional, List, TypeAlias
 
 from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.models.token_type import TokenType

@@ -59,7 +59,6 @@ class App(QMainWindow):
 
         self.text_display.insertPlainText(f"\nPalabras no encontradas:\n")
         for word in minimal_tokenizer.lexemes_not_found:
-            print(word)
             self.text_display.insertPlainText(f"{word}\n")
 
 
