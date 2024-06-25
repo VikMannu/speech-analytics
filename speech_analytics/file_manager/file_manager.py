@@ -5,7 +5,7 @@ from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.models.token_type import TokenType
 
 
-class ReadFile:
+class FileManager:
 
     @staticmethod
     def read_json(file_path: str):

@@ -1,13 +1,13 @@
 from typing import List, Optional
 
 from speech_analytics.models.lexeme import Lexeme
-from speech_analytics.read_file.read_file import ReadFile
+from speech_analytics.file_manager.file_manager import FileManager
 
 
 class MinimalTokenizer:
     def __init__(self, sentence: List[str]):
         self.sentence = sentence
-        self.lexicon = ReadFile.read_lexicon()
+        self.lexicon = FileManager.read_lexicon()
         self.lexemes_found: List[Lexeme] = []
         self.lexemes_not_found: List[str] = []
 
