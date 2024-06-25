@@ -1,4 +1,5 @@
 import json
+import os
 from typing import Dict, Any, Optional, List
 
 from speech_analytics.models.lexeme import Lexeme
@@ -40,7 +41,9 @@ class FileManager:
 
     @classmethod
     def read_lexicon(cls) -> Optional[Dict[str, List[Lexeme]]]:
-        data = cls.read_json('../../data/lexicon.json')
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_dir, '../../data/lexicon.json')
+        data = cls.read_json(file_path)
         lexicon = {}
         for key, value in data.items():
             lexemes = []
