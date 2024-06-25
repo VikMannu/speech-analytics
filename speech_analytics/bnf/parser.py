@@ -1,6 +1,6 @@
 """
 BNF
-<sentence> ::= <word> <elements> { join([word] + [elements]) }
+<sentence> ::= <word> <elements> { [word] + [elements] }
                 | <punctuation> <elements> { [elements] }
 
 <elements> ::= <word> <elements> { [word] + [elements] }
@@ -21,6 +21,7 @@ BNF
 <punctuation> ::= " " | "," | "." | ";" | ":" | "¡" | | "!" | | "¿" | "?" | "(" | ")" | "[" | "]" | "{" | "}" | "'" | "\"" | "\n" | "\t"
                 { '' }
 """
+from typing import List
 
 
 class Parser:
@@ -28,7 +29,7 @@ class Parser:
         self.input = list(input_string)
         self.current_token = None
 
-    def parse(self):
+    def parse(self) -> List[str]:
         try:
             self.current_token = self.__get_next_token()
             return self.__sentence()
@@ -54,10 +55,10 @@ class Parser:
 
     def __sentence(self):
         if self.__is_letter(self.current_token):
-            return '_'.join([self.__word()] + self.__elements())
+            return [self.__word()] + self.__elements()
         else:
             self.__punctuation()
-            return '_'.join(self.__elements())
+            return self.__elements()
 
     def __elements(self):
         if self.current_token is None:

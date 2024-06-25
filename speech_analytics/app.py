@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, Q
     QMessageBox
 
 from speech_analytics.bnf.parser import Parser
-from speech_analytics.classify.classify import Classify
+from speech_analytics.minimal_tokenizer.minimal_tokenizer import MinimalTokenizer
 
 
 class App(QMainWindow):
@@ -42,30 +42,16 @@ class App(QMainWindow):
 
         try:
             parser = Parser(text)
-            classify = Classify(parser.parse())
-            classify.classify()
-            self.display_results(text, classify)
+            minimal_tokenizer = MinimalTokenizer(parser.parse())
+            self.display_results(text, minimal_tokenizer)
         except ValueError as ve:
             # Captura el ValueError y muestra el mensaje de error
             QMessageBox.critical(self, 'Error', f'Error de valor: {str(ve)}')
 
-    def display_results(self, text: str, classify: Classify):
+    def display_results(self, text: str, minimal_tokenizer: MinimalTokenizer):
         self.text_display.clear()
         self.text_display.insertPlainText(text)
         self.text_display.insertPlainText("\n\n--- Resumen ---\n")
-        self.text_display.insertPlainText(f"Palabras: {classify.sentence}\n")
-
-        greetings = ", ".join(f"{key}: {value}" for key, value in classify.greetings_keys.items())
-        self.text_display.insertPlainText(f"Saludos: {greetings}\n")
-
-        farewells = ", ".join(f"{key}: {value}" for key, value in classify.farewells_keys.items())
-        self.text_display.insertPlainText(f"Despedidas: {farewells}\n")
-
-        phrases = ", ".join(f"{key}: {value}" for key, value in classify.phrases_keys.items())
-        self.text_display.insertPlainText(f"Frases: {phrases}\n")
-
-        words = ", ".join(f"{key}: {value}" for key, value in classify.words_keys.items())
-        self.text_display.insertPlainText(f"Palabras encontradas: {words}\n")
 
 
 if __name__ == "__main__":
