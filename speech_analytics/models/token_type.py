@@ -33,3 +33,16 @@ class TokenType(Enum):
             return "I'm sorry to hear that."
         else:
             return "Unknown token type."
+
+    @property
+    def weight(self):
+        if self == TokenType.GREETING:
+            return 2
+        if self == TokenType.FAREWELL:
+            return 2
+        if self == TokenType.GOOD:
+            return 1
+        if self == TokenType.BAD:
+            return 5
+        if self == TokenType.NEUTRAL:
+            return 0
