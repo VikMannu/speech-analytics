@@ -99,14 +99,11 @@ class MinimalTokenizer:
             else:
                 self.non_tokenized_lexemes.append(sentence_to_map.popleft())
 
-    def __search_best_match(self, sentence_to_map: List[str], lexemes: List[Lexeme]) -> Optional[Lexeme]:
+    @staticmethod
+    def __search_best_match(sentence_to_map: List[str], lexemes: List[Lexeme]) -> Optional[Lexeme]:
         sentence = '_'.join(sentence_to_map)
         search_results: List[Lexeme] = [
-            lexeme for lexeme in lexemes if self.__is_present_in_order(lexeme.key, sentence)
+            lexeme for lexeme in lexemes if sentence.startswith(lexeme.key)
         ]
 
         return max(search_results, key=lambda lexeme: lexeme.length, default=None)
-
-    @staticmethod
-    def __is_present_in_order(str1: str, str2: str) -> bool:
-        return str2.startswith(str1)

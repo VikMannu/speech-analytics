@@ -6,7 +6,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, Q
 from speech_analytics.bnf.parser import Parser
 from speech_analytics.file_manager.file_manager import FileManager
 from speech_analytics.minimal_tokenizer.minimal_tokenizer import MinimalTokenizer
-from speech_analytics.models.lexeme import Lexeme
 from speech_analytics.ui.add_lexeme import AddLexeme
 
 
