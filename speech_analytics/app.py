@@ -30,7 +30,7 @@ class App(QMainWindow):
         self.open_agent_button.clicked.connect(self.open_agent_file)
 
         # Botón para abrir el diálogo personalizado
-        self.open_dialog_button = QPushButton("Agregar Lexema", self)
+        self.open_dialog_button = QPushButton("Agregar/Editar Lexema", self)
         self.open_dialog_button.clicked.connect(self.open_dialog)
 
         # Crear un área de texto para mostrar el contenido del archivo
