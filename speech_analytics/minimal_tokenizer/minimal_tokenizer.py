@@ -23,6 +23,10 @@ class MinimalTokenizer:
         return TokenType.FAREWELL in self.token_types_found
 
     @property
+    def has_identification(self) -> bool:
+        return TokenType.IDENTIFICATION in self.token_types_found
+
+    @property
     def evaluation(self) -> Tuple[str, float]:
         good_sum, bad_sum, greeting_sum, farewell_sum = self.__categorize_and_sum_weights()
         normalized_good, normalized_bad, normalized_greeting, normalized_farewell = self.__normalize_weights(good_sum, bad_sum, greeting_sum, farewell_sum)

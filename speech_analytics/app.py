@@ -1,12 +1,16 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QPushButton, QVBoxLayout, QWidget, QFileDialog, \
-    QMessageBox
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QTextEdit, QPushButton, QVBoxLayout,
+    QWidget, QFileDialog, QMessageBox
+)
 
 from speech_analytics.bnf.parser import Parser
 from speech_analytics.file_manager.file_manager import FileManager
 from speech_analytics.minimal_tokenizer.minimal_tokenizer import MinimalTokenizer
+from speech_analytics.models.role import Role
 from speech_analytics.ui.add_lexeme import AddLexeme
+from speech_analytics.ui.summary_window import SummaryWindow
 
 
 class App(QMainWindow):
@@ -14,11 +18,16 @@ class App(QMainWindow):
         super().__init__()
         self.setWindowTitle("Speech Analytics")
 
-        self.text: str = ""
+        self.client_text: str = ""
+        self.agent_text: str = ""
 
-        # Botón para abrir el archivo
-        self.open_button = QPushButton("Abrir Archivo", self)
-        self.open_button.clicked.connect(self.open_file)
+        # Botón para abrir el archivo del cliente
+        self.open_client_button = QPushButton("Abrir Archivo Cliente", self)
+        self.open_client_button.clicked.connect(self.open_client_file)
+
+        # Botón para abrir el archivo del agente
+        self.open_agent_button = QPushButton("Abrir Archivo Agente", self)
+        self.open_agent_button.clicked.connect(self.open_agent_file)
 
         # Botón para abrir el diálogo personalizado
         self.open_dialog_button = QPushButton("Agregar Lexema", self)
@@ -28,11 +37,12 @@ class App(QMainWindow):
         self.text_display = QTextEdit(self)
         self.text_display.setReadOnly(True)
         self.text_display.setLineWrapMode(QTextEdit.WidgetWidth)
-        self.text_display.setFixedSize(800, 400)
+        self.text_display.setFixedSize(800, 200)
 
         # Layout principal
         layout = QVBoxLayout()
-        layout.addWidget(self.open_button)
+        layout.addWidget(self.open_client_button)
+        layout.addWidget(self.open_agent_button)
         layout.addWidget(self.open_dialog_button)
         layout.addWidget(self.text_display)
 
@@ -41,45 +51,42 @@ class App(QMainWindow):
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
 
-    def open_file(self):
-        filepath, _ = QFileDialog.getOpenFileName(self, "Abrir Archivo", "", "Text files (*.txt);;All files (*.*)")
+    def open_client_file(self):
+        filepath, _ = QFileDialog.getOpenFileName(self, "Abrir Archivo Cliente", "",
+                                                  "Text files (*.txt);;All files (*.*)")
         if not filepath:
             return
 
         with open(filepath, "r") as file:
-            self.text = file.read()
+            self.client_text = file.read()
 
-        self.display_results()
+        self.display_results(Role.CUSTOMER, self.client_text)
 
-    def display_results(self):
+    def open_agent_file(self):
+        filepath, _ = QFileDialog.getOpenFileName(self, "Abrir Archivo Agente", "",
+                                                  "Text files (*.txt);;All files (*.*)")
+        if not filepath:
+            return
+
+        with open(filepath, "r") as file:
+            self.agent_text = file.read()
+
+        self.display_results(Role.AGENT, self.agent_text)
+
+    def display_results(self, role: Role, text: str):
         try:
-            parser = Parser(self.text)
-            minimal_tokenizer = MinimalTokenizer(parser.parse())
-            minimal_tokenizer.search_lexemes()
+            parser = Parser(text)
+            tokenizer = MinimalTokenizer(parser.parse())
+            tokenizer.search_lexemes()
+
+            # Mostrar ventana emergente con el resumen y las tablas
+            summary_window = SummaryWindow(role, tokenizer)
+            summary_window.exec_()
+
+            # Mostrar texto en el área de texto principal
             self.text_display.clear()
-            self.text_display.insertPlainText(self.text)
-            self.text_display.insertPlainText("\n\n--- Resumen ---\n")
-            self.text_display.insertPlainText(f"\nEvaluación:\n")
-            if minimal_tokenizer.has_greeting:
-                self.text_display.insertPlainText(f"Contiene saludo\n")
-            else:
-                self.text_display.insertPlainText(f"NO contiene saludo\n")
+            self.text_display.insertPlainText(text)
 
-            if minimal_tokenizer.has_farewell:
-                self.text_display.insertPlainText(f"Contiene despedida\n")
-            else:
-                self.text_display.insertPlainText(f"NO contiene despedida\n")
-
-            message, score = minimal_tokenizer.evaluation
-            self.text_display.insertPlainText(f"Evaluación final: {message}({score})\n")
-
-            self.text_display.insertPlainText(f"\nPalabras tokenizadas:\n")
-            for lexeme in minimal_tokenizer.tokenized_lexemes:
-                self.text_display.insertPlainText(f"{lexeme}\n")
-
-            self.text_display.insertPlainText(f"\nPalabras no tokenizadas:\n")
-            for word in minimal_tokenizer.non_tokenized_lexemes:
-                self.text_display.insertPlainText(f"{word}\n")
         except ValueError as ve:
             # Captura el ValueError y muestra el mensaje de error
             QMessageBox.critical(self, 'Error', f'Error de valor: {str(ve)}')
@@ -90,7 +97,6 @@ class App(QMainWindow):
             lexeme = dialog.get_data()
             if lexeme:
                 FileManager.update_lexicon(lexeme)
-                self.display_results()
 
 
 if __name__ == "__main__":
