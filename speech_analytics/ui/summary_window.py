@@ -78,4 +78,5 @@ class SummaryWindow(QDialog):
         self.non_tokenized_table.setRowCount(len(non_tokenized_lexemes))
 
         for row, word in enumerate(non_tokenized_lexemes):
+            print(word)
             self.non_tokenized_table.setItem(row, 0, QTableWidgetItem(word))
