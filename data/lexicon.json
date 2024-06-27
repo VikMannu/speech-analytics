@@ -52,6 +52,16 @@
             "token": "GREETING",
             "weight": 4,
             "length": 2
+        },
+        "buen_dia": {
+            "key": "buen_dia",
+            "lexemes": [
+                "buen",
+                "dia"
+            ],
+            "token": "GREETING",
+            "weight": 3,
+            "length": 2
         }
     },
     "te": {
@@ -387,6 +397,28 @@
             "token": "IDENTIFICATION",
             "weight": 2,
             "length": 5
+        }
+    },
+    "número": {
+        "número_de_documento": {
+            "key": "número_de_documento",
+            "lexemes": [
+                "número",
+                "de",
+                "documento"
+            ],
+            "token": "IDENTIFICATION",
+            "weight": 3,
+            "length": 3
+        },
+        "número": {
+            "key": "número",
+            "lexemes": [
+                "número"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
         }
     }
 }
