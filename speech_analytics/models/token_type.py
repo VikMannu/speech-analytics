@@ -4,6 +4,7 @@ from enum import Enum
 class TokenType(Enum):
     GREETING = "GREETING"
     FAREWELL = "FAREWELL"
+    IDENTIFICATION = "IDENTIFICATION"
     GOOD = "GOOD"
     BAD = "BAD"
     NEUTRAL = "NEUTRAL"
@@ -14,6 +15,8 @@ class TokenType(Enum):
             return "SALUDO"
         elif self == TokenType.FAREWELL:
             return "DESPEDIDA"
+        elif self == TokenType.IDENTIFICATION:
+            return "IDENTIFICACIÓN"
         elif self == TokenType.GOOD:
             return "BUENO"
         elif self == TokenType.BAD:
@@ -27,6 +30,8 @@ class TokenType(Enum):
             return "Hello! How can I help you?"
         elif self == TokenType.FAREWELL:
             return "Goodbye! Have a great day!"
+        elif self == TokenType.IDENTIFICATION:
+            return "Please provide your document or ID."
         elif self == TokenType.GOOD:
             return "Thank you!"
         elif self == TokenType.BAD:
@@ -38,11 +43,13 @@ class TokenType(Enum):
     def weight(self):
         if self == TokenType.GREETING:
             return 2
-        if self == TokenType.FAREWELL:
+        elif self == TokenType.FAREWELL:
             return 2
-        if self == TokenType.GOOD:
+        elif self == TokenType.IDENTIFICATION:
+            return 3
+        elif self == TokenType.GOOD:
             return 1
-        if self == TokenType.BAD:
+        elif self == TokenType.BAD:
             return 5
-        if self == TokenType.NEUTRAL:
+        else:
             return 0

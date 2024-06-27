@@ -88,8 +88,9 @@ class App(QMainWindow):
         dialog = AddLexeme()
         if dialog.exec_() == dialog.Accepted:
             lexeme = dialog.get_data()
-            FileManager.update_lexicon(lexeme)
-            self.display_results()
+            if lexeme:
+                FileManager.update_lexicon(lexeme)
+                self.display_results()
 
 
 if __name__ == "__main__":

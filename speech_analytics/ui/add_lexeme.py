@@ -1,4 +1,6 @@
 import sys
+from typing import Optional
+
 from PyQt5.QtWidgets import QApplication, QDialog, QComboBox, QLineEdit, QPushButton, QSpinBox, QVBoxLayout, QLabel
 
 from speech_analytics.bnf.parser import Parser
@@ -42,9 +44,13 @@ class AddLexeme(QDialog):
 
         self.setLayout(layout)
 
-    def get_data(self) -> Lexeme:
+    def get_data(self) -> Optional[Lexeme]:
         # Obtén los datos ingresados por el usuario
         text = self.lineEdit.text()
+
+        if text is None or text == '':
+            return None
+
         selected_title = self.comboBox.currentText()
         selected_token_type = next(token_type for token_type in TokenType if token_type.title == selected_title)
         weight = self.spinBox.value()
