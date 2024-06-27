@@ -97,6 +97,10 @@ class App(QMainWindow):
             lexeme = dialog.get_data()
             if lexeme:
                 FileManager.update_lexicon(lexeme)
+                if not self.client_text == "":
+                    self.display_results(Role.CUSTOMER, self.client_text)
+                if not self.agent_text == "":
+                    self.display_results(Role.AGENT, self.agent_text)
 
 
 if __name__ == "__main__":
