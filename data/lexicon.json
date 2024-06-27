@@ -351,5 +351,42 @@
             "weight": 0,
             "length": 1
         }
+    },
+    "y": {
+        "y": {
+            "key": "y",
+            "lexemes": [
+                "y"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
+        }
+    },
+    "desde": {
+        "desde": {
+            "key": "desde",
+            "lexemes": [
+                "desde"
+            ],
+            "token": "NEUTRAL",
+            "weight": 0,
+            "length": 1
+        }
+    },
+    "año": {
+        "año_de_mi_nacimiento_es": {
+            "key": "año_de_mi_nacimiento_es",
+            "lexemes": [
+                "año",
+                "de",
+                "mi",
+                "nacimiento",
+                "es"
+            ],
+            "token": "IDENTIFICATION",
+            "weight": 2,
+            "length": 5
+        }
     }
 }
