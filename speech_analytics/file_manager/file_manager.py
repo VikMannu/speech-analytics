@@ -68,5 +68,7 @@ class FileManager:
 
         if lexeme.key not in lexicon[lexeme.root]:
             lexicon[lexeme.root][lexeme.key] = lexeme
+        else:
+            lexicon[lexeme.root][lexeme.key] = lexeme
 
         cls.write_json(file_path, lexicon)
